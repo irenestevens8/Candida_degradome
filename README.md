@@ -10,3 +10,10 @@
 
 # **Abstract**
 Candida albicans is a leading cause of nosocomial bloodstream infections (BSIs) in high-risk hospital units (e.g. neonatal and intensive care units (ICUs)). Management of candidemia relies on a few antifungal agents, with Fluconazole being safest and first line therapy. Despite its efficacy, the increase in Fluconazole-resistant infections caused by Candida species (spp.) (2) poses a significant challenge to its continual use and highlights the need for improved molecular understanding of drug response. Here we show widespread co-translational decay occurs in Candida albicans and derive Fluconazole-specific degradation signatures. Furthermore, we show that ribosome positional occupancy at nucleotide-, amino acid- codon resolution provides a readout of Fluconazole-induced cellular stress. Finally, we show that frame protection patterns in signature genes are associated with phenotypic response to Fluconazole.
+
+# **Data**
+
+# **Scripts for reproduction of manuscript figures**
+## **Main Figures**
+
+## **Additional scripts pertaining to the study**

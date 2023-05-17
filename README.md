@@ -15,6 +15,9 @@ Candida albicans is a leading cause of nosocomial bloodstream infections (BSIs) 
 Count tables from the fivepseq package are available in the [Data](https://github.com/irenestevens8/Candida_degradome/tree/main/Data) folder. 
 
 # **Scripts for reproduction of manuscript figures**
+All manuscript figures may be reproduced from the R scripts within this repository, with the exception of those not prepared in R.
+
+
 ## **Main Figures**
 
 ## **Additional scripts pertaining to the study**

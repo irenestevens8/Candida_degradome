@@ -19,7 +19,8 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 
 
 ## **Main Figures**
-Figure 1
+
+**Figure 1**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
 Figure 2
 Figure 3
 Figure 4

@@ -21,15 +21,21 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 ## **Main Figures**
 
 **Figure 1**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
+
 **Figure 2**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
+
 **Figure 3**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
+
 **Figure 4**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
 
 ## **Additional scripts pertaining to the study**
+
 [Differential Expression Analysis](https://github.com/irenestevens8/Candida_degradome)
+
 [Functional Annotation Analysis](https://david.ncifcrf.gov/)
 
 # **Supplementary Tables** 
+
 Table S1: Differentially degraded genes and corresponding abundance and frame protection.
 
 # **Contact** 

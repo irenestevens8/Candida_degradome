@@ -19,9 +19,13 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 
 
 ## **Main Figures**
+Figure 1
+Figure 2
+Figure 3
+Figure 4
 
 ## **Additional scripts pertaining to the study**
 
 # **Supplementary Tables** 
-
+Table S1: Differentially degraded genes and corresponding abundance and frame protection.
 # **Contact** 

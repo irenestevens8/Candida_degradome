@@ -1,1 +1,17 @@
+library(ggplot2)
+library(gridExtra)
 
+# create metagene plot at start and term
+f1<-read.delim('Documents/CUG_reprocessed/fivepseq/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_START.txt', header=F)
+f2<-read.delim('Documents/CUG_reprocessed/fivepseq/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_TERM.txt', header=F)
+
+plot1 <-ggplot(f1, aes(x = f1$V1, y = f1$V2)) +
+  geom_line(color = "steelblue") +
+  labs(title = "SC5314 Fluconazole", x = "START", y = "Read Counts")  + theme(panel.background = element_rect(fill = "white"))
+
+plot2 <-ggplot(f2, aes(x = f2$V1, y = f2$V2)) +
+  geom_line(color = "steelblue") +
+  labs(x = "TERM", y = "Read Counts")  + theme(panel.background = element_rect(fill = "white"))
+
+plot_panel <- grid.arrange(plot1, plot2, nrow = 1)
+plot_panel

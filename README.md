@@ -35,9 +35,12 @@ Table S1: [Read and mapping quality metrics](https://github.com/irenestevens8/Ca
 Table S2: Differentially degraded genes and corresponding abundance and frame protection.
 
 # **Contact** 
-For all questions regarding this study, please contact:     
+For questions regarding the 5'P sequencing, please contact:                                        
+[Vicente Pelechano](vicente.pelechano.garcia@ki.se)   
 
-[Vicente Pelechano](vicente.pelechano.garcia@ki.se)                   
+For questions regarding the strains used in this study, please contact:                      
+[Fitz Gerald Salazar Silao](fitzgerald.silao@su.se)                               
+[Per Ljungdahl](per.ljungdahl@su.se)                          
 
 # **Links to relevant websites** 
 [Fivepseq package for Candida ](https://github.com/irenestevens8/fivepseq/tree/Candida)           

@@ -3,9 +3,8 @@
 **Irene Stevens<sup>1</sup>, Gerald Silao Fitz<sup>2</sup>, Susanne Huch<sup>1</sup>, Kicki Ryman<sup>2</sup>, Per O. Ljungdahl<sup>2</sup>, Vicente Pelechano<sup>1</sup>**
 
 
-<sup>1</sup> Science for Life Laboratory, Department of Microbiology, Tumor and Cell Biology, Karolinska Universitet, Solna, Sweden
-
-<sup>2</sup> Science for Life Laboratory, Department of Molecular Biosciences, The Wenner-Gren Institute, Stockholm University, 106 91 Stockholm, Sweden
+<sup>1</sup> Science for Life Laboratory, Department of Microbiology, Tumor and Cell Biology, Karolinska Universitet, Solna, Sweden.     
+<sup>2</sup> Science for Life Laboratory, Department of Molecular Biosciences, The Wenner-Gren Institute, Stockholm University, 106 91 Stockholm, Sweden. 
 
 
 # **Abstract**
@@ -20,36 +19,27 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 
 ## **Main Figures**
 
-**Figure 1**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
-
-**Figure 2**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
-
-**Figure 3**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
-
-**Figure 4**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome)
+**Figure 1**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).    
+**Figure 2**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).  
+**Figure 3**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).                    
+**Figure 4**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).    
 
 ## **Additional scripts pertaining to the study**
 
-[Differential Expression Analysis](https://github.com/irenestevens8/Candida_degradome)
-
+[Differential Expression Analysis](https://github.com/irenestevens8/Candida_degradome).                   
 [Functional Annotation Analysis](https://david.ncifcrf.gov/)
 
 # **Supplementary Tables** 
 
-Table S1: [Read and mapping quality metrics](https://github.com/irenestevens8/Candida_degradome/tree/main/Supplementary%20Tables/Table%20S1.xlsx)
-
+Table S1: [Read and mapping quality metrics](https://github.com/irenestevens8/Candida_degradome/tree/main/Supplementary%20Tables/Table%20S1.xlsx)                                      
 Table S2: Differentially degraded genes and corresponding abundance and frame protection.
 
 # **Contact** 
 For all questions regarding this study, please contact:
-
-[Vicente Pelechano](vicente.pelechano.garcia@ki.se) 
+[Vicente Pelechano](vicente.pelechano.garcia@ki.se)                   
 
 # **Links to relevant websites** 
-[Fivepseq package for Candida ](https://github.com/irenestevens8/fivepseq/tree/Candida)
-
-[Fivepseq package User Manual](https://fivepseq.readthedocs.io/en/latest/) 
-
-[Pelechano Lab website](https://pelechanolab.com/)
-
-[Per Ljundahl lab website ](https://www.scilifelab.se/researchers/per-o-ljungdahl/)
+[Fivepseq package for Candida ](https://github.com/irenestevens8/fivepseq/tree/Candida)           
+[Fivepseq package User Guide](https://fivepseq.readthedocs.io/en/latest/)                             
+[Pelechano Lab website](https://pelechanolab.com/)                     
+[Per Ljundahl lab website ](https://www.scilifelab.se/researchers/per-o-ljungdahl/)            

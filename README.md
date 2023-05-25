@@ -19,7 +19,7 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 
 ## **Main Figures**
 
-**Figure 1**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).    
+**Figure 1**: [Rscript]([https://github.com/irenestevens8/Candida_degradome](https://github.com/irenestevens8/Candida_degradome/blob/main/Figures/Figure%201)).     
 **Figure 2**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).  
 **Figure 3**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).                    
 **Figure 4**: [Rscript markdown](https://github.com/irenestevens8/Candida_degradome).    

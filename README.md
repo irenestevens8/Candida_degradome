@@ -44,3 +44,9 @@ Table S2: Differentially degraded genes and corresponding abundance and frame pr
 For all questions regarding this study, please contact:
 
 [Vicente Pelechano](vicente.pelechano.garcia@ki.se) 
+
+# **Links to relevant websites** 
+[Fivepseq package for Candida ](https://github.com/irenestevens8/fivepseq/tree/Candida)
+[Fivepseq package User Manual](https://fivepseq.readthedocs.io/en/latest/) 
+[Pelechano Lab website](https://pelechanolab.com/)
+[Per Ljundahl lab website ](https://www.scilifelab.se/researchers/per-o-ljungdahl/)

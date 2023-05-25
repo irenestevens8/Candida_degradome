@@ -35,7 +35,8 @@ Table S1: [Read and mapping quality metrics](https://github.com/irenestevens8/Ca
 Table S2: Differentially degraded genes and corresponding abundance and frame protection.
 
 # **Contact** 
-For all questions regarding this study, please contact:
+For all questions regarding this study, please contact:     
+
 [Vicente Pelechano](vicente.pelechano.garcia@ki.se)                   
 
 # **Links to relevant websites** 

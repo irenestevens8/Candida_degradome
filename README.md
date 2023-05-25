@@ -32,7 +32,7 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 # **Supplementary Tables** 
 
 Table S1: Candida strains used in study                                                        
-Table S2:[Read and mapping quality metrics](https://github.com/irenestevens8/Candida_degradome/tree/main/Supplementary%20Tables/Table%20S1.xlsx)                                      
+Table S2: [Read and mapping quality metrics](https://github.com/irenestevens8/Candida_degradome/tree/main/Supplementary%20Tables/Table%20S1.xlsx)                                      
 Table S2: Differentially degraded genes and corresponding abundance and frame protection.
 
 # **Contact** 

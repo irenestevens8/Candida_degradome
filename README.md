@@ -41,7 +41,7 @@ For questions regarding the 5'P sequencing, please contact:
 
 For questions regarding the strains used in this study, please contact:                      
 [Fitz Gerald Salazar Silao](fitzgerald.silao@su.se)                               
-[Per Ljungdahl](per.ljungdahl@su.se)                          
+                         
 
 # **Links to relevant websites** 
 [Fivepseq package for Candida ](https://github.com/irenestevens8/fivepseq/tree/Candida)           

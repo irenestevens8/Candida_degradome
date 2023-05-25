@@ -36,7 +36,7 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 
 # **Supplementary Tables** 
 
-Table S1: Read and mapping quality metrics
+Table S1: [Read and mapping quality metrics](Supplementary Tables/Table S1.xlsx)
 
 Table S2: Differentially degraded genes and corresponding abundance and frame protection.
 

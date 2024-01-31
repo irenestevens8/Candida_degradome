@@ -3,7 +3,7 @@
 **Irene Stevens<sup>1</sup>, Gerald Silao Fitz<sup>2</sup>, Susanne Huch<sup>1</sup>, Kicki Ryman<sup>2</sup>, Honglian Liu<sup>1</sup>, Adriana Carvajal Jimenez<sup>1</sup>, Per O. Ljungdahl<sup>2</sup>, Vicent Pelechano<sup>1</sup>**
 
 
-<sup>1</sup> Scilifelab, Department of Microbiology, Tumor and Cell Biology, Karolinska Universitet, Solna, 171 65 Sweden.     
+<sup>1</sup> Scilifelab, Department of Microbiology, Tumor and Cell Biology, Karolinska Universitet, Solna, Sweden.     
 <sup>2</sup> Science for Life Laboratory (SciLifeLab), Department of Molecular Biosciences, Stockholm University, Stockholm, Sweden. 
 
 

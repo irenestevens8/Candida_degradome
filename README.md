@@ -1,14 +1,14 @@
-# **The co-translational degradome provides a readout of Fluconazole response in Candida albicans**
+# **The early transcriptional and post-transcriptional responses to Fluconazole in sensitive and resistant Candida albicans**
 
-**Irene Stevens<sup>1</sup>, Gerald Silao Fitz<sup>2</sup>, Susanne Huch<sup>1</sup>, Kicki Ryman<sup>2</sup>, Per O. Ljungdahl<sup>2</sup>, Vicente Pelechano<sup>1</sup>**
+**Irene Stevens<sup>1</sup>, Gerald Silao Fitz<sup>2</sup>, Susanne Huch<sup>1</sup>, Kicki Ryman<sup>2</sup>, Honglian Liu<sup>1</sup>, Adriana Carvajal Jimenez<sup>1</sup>, Per O. Ljungdahl<sup>2</sup>, Vicente Pelechano<sup>1</sup>**
 
 
-<sup>1</sup> Science for Life Laboratory, Department of Microbiology, Tumor and Cell Biology, Karolinska Universitet, Solna, Sweden.     
-<sup>2</sup> Science for Life Laboratory, Department of Molecular Biosciences, The Wenner-Gren Institute, Stockholm University, 106 91 Stockholm, Sweden. 
+<sup>1</sup> Scilifelab, Department of Microbiology, Tumor and Cell Biology, Karolinska Universitet, Solna, 171 65 Sweden.     
+<sup>2</sup> Science for Life Laboratory (SciLifeLab), Department of Molecular Biosciences, Stockholm University, Stockholm, Sweden. 
 
 
 # **Abstract**
-Candida albicans is a leading cause of nosocomial bloodstream infections (BSIs) in high-risk hospital units (e.g. neonatal and intensive care units (ICUs)). Management of candidemia relies on a few antifungal agents, with Fluconazole being safest and first line therapy. Despite its efficacy, the increase in Fluconazole-resistant infections caused by Candida species (spp.) (2) poses a significant challenge to its continual use and highlights the need for improved molecular understanding of drug response. Here we show widespread co-translational decay occurs in Candida albicans and derive Fluconazole-specific degradation signatures. Furthermore, we show that ribosome positional occupancy at nucleotide-, amino acid- codon resolution provides a readout of Fluconazole-induced cellular stress. Finally, we show that frame protection patterns in signature genes are associated with phenotypic response to Fluconazole.
+Candida albicans is a dimorphic fungus that is a leading cause of nosocomial bloodstream infections in high-risk hospital units. Management of disseminated candida infections relies on a few antifungals, with Fluconazole being first-line therapy. The emergence of Fluconazole-resistant Candida strains highlights the need for improved molecular understanding of drug response. In this work we characterize the early transcriptional and posttranscriptional response of sensitive and resistant C. albicans in response to Fluconazole. Our work has previously shown in S. cerevisiae that mRNA degradation is connected to the translation process up to the degree that 5´-3´ mRNA degradation follows the last translating ribosome. Thus, the study of the 5'P mRNA degradome (5PSeq) offers a simple and affordable way to measure ribosome dynamics. Here, we expanded our 5PSeq work to Candida and show that it can be used to identify codon specific ribosome stalls in response to drugs and amino acid deprivation. Next, we use both RNA-Seq and 5PSeq to study the early response to fluconazole in sensitive and resistant strains. Our results suggest that transcriptional responses, rather than changes in ribosome dynamics, are the main driver of the earlier Candida response to fluconazole.
 
 # **Data**
 Count tables from the fivepseq package are available in the [Data](https://github.com/irenestevens8/Candida_degradome/tree/main/Data) folder. 

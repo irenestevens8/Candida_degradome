@@ -3,6 +3,8 @@
 library(ggplot2)
 library(ggrepel)
 library(dplyr)
+library(gridExtra)
+library(reshape2)
 
 ## Load Differentially Expressed Genes
 ctx<-read.delim('/Users/vip/Documents/Candida/RNA-seq/DEG_sc5314_geneid.txt', sep="\t", header=T)
@@ -14,7 +16,7 @@ cols <- c("up" = "#870052", "down" = "#4DB5BC", "non_significant" = "#DDDEE0")
 sizes <- c("up" = 3, "down" = 3, "non_significant" = 2)
 alphas <- c("up" = 3, "down" = 3, "non_significant" = 2)
 
-ctx %>%
+volcano<- ctx %>%
   ggplot(aes(x = log2FoldChange, y = -log10(padj), fill = gene_type, size = gene_type, alpha = gene_type)) +
   geom_point(shape = 21, colour = "black") +
   geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
@@ -35,3 +37,28 @@ ctx %>%
   theme_minimal() +  # Set the plot theme to minimal
   theme(plot.background = element_rect(fill = "white"))  # Change the background color to white
 
+volcano
+
+## Ploting Gene Ontology results downloaded from David:
+# read in data
+data_up <- read.delim('/Users/vip/Documents/Candida/RNA-seq/GO_sc5314_up_genes.txt', header = TRUE)
+data_up <- data_up[order(-data_up$Fold.Enrichment), ]
+
+data_down <- read.delim('/Users/vip/Documents/Candida/RNA-seq/GO_sc5314_down_genes.txt', header = TRUE)
+data_down <- data_down[order(-data_down$Fold.Enrichment), ]
+
+# create the boxplots
+plot_up <- ggplot(data_up, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fill = -log10(PValue))) +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_gradient(low = "white", high = "#870052") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x = "GO Terms", y = "Fold Enrichment", title = "Transcriptionally upregulated")
+
+plot_down <- ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fill = -log10(PValue))) +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_gradient(low = "white", high = "#4DB5BC") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x = "GO Terms", y = "Fold Enrichment", title = "Transcriptionally downregulated")
+
+# Combine the boxplots 
+combined_plot <- grid.arrange(plot_up, plot_down, ncol=2)

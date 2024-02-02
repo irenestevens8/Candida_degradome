@@ -62,3 +62,32 @@ plot_down <- ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.
 
 # Combine the boxplots 
 combined_plot <- grid.arrange(plot_up, plot_down, ncol=2)
+
+# Violin plot of amino acid frame protetion index
+
+#read in data from file
+data<-read.delim('/Users/vip/Documents/CUG_reprocessed/Figure 3/sc5314_amino_acid_FPI.txt', header=T, row.names=1)
+
+# Calculate the average of 3 replicates for fluconazole and control
+data_avg <- data %>%
+  mutate(Fluconazole_avg = rowMeans(select(., starts_with("fluc_rep")), na.rm = TRUE),
+         Control_avg = rowMeans(select(., starts_with("control_rep")), na.rm = TRUE))
+
+# Reshape data and reorder levels
+data_long <- data_avg %>%
+  gather(key = "Condition", value = "Value", Fluconazole_avg, Control_avg)
+data_long$Condition <- factor(data_long$Condition, levels = c("Fluconazole_avg", "Control_avg"))
+
+# Plot the violin plot with different colors for each group
+ggplot(data_long, aes(x = Condition, y = Value, fill = Condition)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, fill = "white", color = "black") +
+  scale_fill_manual(values = c("#870052", "#4DB5BC")) +  
+  labs(title = "Amino Acid Frame Protection Index",
+       x = "Condition",
+       y = "Frame Protection Index")
+
+t_test_result <- t.test(Value ~ Condition, data = data_long)
+
+t_test_result
+

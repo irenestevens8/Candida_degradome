@@ -1,0 +1,66 @@
+# Figure 3 : Compare Resistant (plc124) and Sensitive (sc5314) Candida in the absence of treatment
+
+#Perform differential expression analysis for plc124 and sc5314 
+
+
+
+#Load DEG of PLC124 compared to SC5314
+ctx<-read.delim("/Users/vip/Documents/Candida/RNA-seq/DEG_plc124.vs.sc5314_geneid.txt", sep="\t", header=T)
+
+ctx <- ctx %>% mutate(gene_type = case_when(log2FoldChange > 0.5 & padj <= 0.05 ~ "up",log2FoldChange <= -0.5 & padj <= 0.05 ~ "down",TRUE ~ "non_significant"))
+cols <- c("up" = "#870052", "down" = "#4DB5BC", "non_significant" = "#DDDEE0")
+sizes <- c("up" = 3, "down" = 3, "non_significant" = 2)
+alphas <- c("up" = 3, "down" = 3, "non_significant" = 2)
+
+# Volcano plot
+ctx %>%
+  ggplot(aes(x = log2FoldChange, y = -log10(padj), fill = gene_type, size = gene_type, alpha = gene_type)) +
+  geom_point(shape = 21, colour = "black") +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+  geom_vline(xintercept = c(-0.5, 0.5), linetype = "dashed") +
+  scale_fill_manual(values = cols) +
+  scale_size_manual(values = sizes) +
+  scale_alpha_manual(values = alphas) +
+  scale_x_continuous(breaks = c(seq(-3, 3, 2)), limits = c(-8, 8)) +
+  geom_text_repel(
+    data = ctx %>%
+      filter(gene_id %in% c("GDH2", "HSP70","TEF1","ACO2","LYS9","GCV2","FRE10","PCK1","MLS1","MNN4-4","CAALFM_C504360CA","CAALFM_C301820WA","ARO10","CSP37","CAALFM_C402620CA")),
+    aes(label = gene_id),
+    force = 2,
+    nudge_y = 1
+  ) +
+  scale_colour_manual(values = cols) +
+  scale_x_continuous(breaks = c(seq(-2, 2, 1)), limits = c(-2, 2)) +
+  coord_cartesian(ylim = c(0, 200)) +  # Set y-axis limit to -200 to 200
+  theme_minimal() +
+  theme(plot.background = element_rect(fill = "white"))  # Change the background color to white
+
+
+# Barplot of Gene Ontrology from DAVID
+
+# Load file from DAVID
+data_up <- read.delim('/Users/vip/Documents/Candida/RNA-seq/GO_up_sc5314.vs.plc124.txt', header = TRUE)
+data_up <- data_up[order(-data_up$Fold.Enrichment), ]
+
+data_down <- read.delim('/Users/vip/Documents/Candida/RNA-seq/GO_down_sc5314.vs.plc124.txt', header = TRUE)
+data_down <- data_down[order(-data_down$Fold.Enrichment), ]
+
+#Plot Barplots
+plot_up <- ggplot(data_up, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fill = -log10(PValue))) +
+  coord_flip() +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_gradient(low = "white", high = "#870052") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x = "GO Terms", y = "Fold Enrichment", title = "Upregulated genes in Resistant")
+
+data_down <- read.delim('/Users/vip/Documents/Candida/RNA-seq/GO_down_sc5314.vs.plc124.txt', header = TRUE)
+data_down <- data_down[order(-data_down$Fold.Enrichment), ]
+plot_down <- ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fill = -log10(PValue))) +
+  coord_flip() +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_gradient(low = "white", high = "#4DB5BC") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x = "GO Terms", y = "Fold Enrichment", title = "Downregulated genes in Resistant")
+
+
+

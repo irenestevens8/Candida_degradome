@@ -1,7 +1,33 @@
 # Figure 3 : Compare Resistant (plc124) and Sensitive (sc5314) Candida in the absence of treatment
 
+library(DESeq2)
+
 #Perform differential expression analysis for plc124 and sc5314 
 
+# Load data and metadata
+ctx<-as.matrix(read.delim("/Users/vip/Documents/Candida/RNA-seq/counts_no.treatment.txt", sep="\t", row.names = 1, header=T, check.names=F,stringsAsFactors = TRUE))
+coldata<-read.delim("/Users/vip/Documents/Candida/RNA-seq/metadata_noTreatment.txt",row.names=1,stringsAsFactors = TRUE)
+coldata<-coldata[,c("Strain","Replicate")]
+coldata$Treatment<-factor(coldata$Strain)
+
+#set reference level Sensitive (sc5314)
+coldata$Treatment=relevel(coldata$Treatment, 'sc5314')
+
+#perform diffrential expression analysis
+dds <- DESeqDataSetFromMatrix(countData=ctx,  colData = coldata, design <- ~Strain)
+dds<-DESeq(dds)
+sd <- rlog(dds,blind=TRUE)
+
+plotPCA(sd,intgroup=c("Strain")) # check for sample swaps
+res = results(dds, contrast=c("Strain","sc5314","plc124"))
+write.csv(as.data.frame(res),file='/Users/vip/Documents/Candida/RNA-seq/DEG_plc124.vs.sc5314.txt')
+
+#convert gene names
+ctx<-read.delim("/Users/vip/Documents/Candida/RNA-seq/DEG_plc124.vs.sc5314.txt", sep="\t", header=T)
+anno<-read.delim("/Users/vip/Documents/CUG_reprocessed/Figure 2/annotation_pretty.txt", sep="\t", header=T, check.names=F)
+common_col<-'cds_id'
+merged.sc<-merge(ctx,anno,by=common_col)
+write.table(merged.sc, file="/Users/vip/Documents/Candida/RNA-seq/DEG_plc124_geneid.txt", sep="\t", quote=F, row.names=T, col.names=NA)
 
 
 #Load DEG of PLC124 compared to SC5314
@@ -61,6 +87,5 @@ plot_down <- ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.
   scale_fill_gradient(low = "white", high = "#4DB5BC") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(x = "GO Terms", y = "Fold Enrichment", title = "Downregulated genes in Resistant")
-
 
 

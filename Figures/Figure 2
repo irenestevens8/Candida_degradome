@@ -5,6 +5,8 @@ library(ggrepel)
 library(dplyr)
 library(gridExtra)
 library(reshape2)
+library(tidyverse)
+
 
 ## Load Differentially Expressed Genes
 ctx<-read.delim('/Users/vip/Documents/Candida/RNA-seq/DEG_sc5314_geneid.txt', sep="\t", header=T)

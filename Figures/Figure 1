@@ -1,30 +1,136 @@
-library(ggplot2)
-library(gridExtra)
-library(viridis)
+# Figure 1 : Compare S. Cerevisae (BY4741) and C. albicans (sc5314) ribosome dynamics
 
-f1<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_START.txt', header=F)
-f2<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_TERM.txt', header=F)
+# Figure 1A: Frame preferences in BY4741 versus SC5314.
+# Values represent the average of replicates from frame_stats.txt files (see Data folder). 
 
-plot1 <-ggplot(f1, aes(x = f1$V1, y = f1$V2)) +
+# S. Cerevisae (BY4741) Control: y4741-ypd_ctr-r1_s1_frame_stats.txt, y4741-ypd_ctr-r2_s1_frame_stats.txt
+data1 <- data.frame(frequency = c(30.75, 42.3, 27), group = c("F0", "F1", "F2"))
+plot1 <- ggplot(data1, aes(x = group, y = frequency, fill = group)) +
+    geom_bar(stat = "identity", color = "black") +
+    scale_fill_manual(values = c("F0" = rgb(255, 221, 214, maxColorValue = 255), 
+                                 "F1" = rgb(255, 221, 214, maxColorValue = 255), 
+                                 "F2" = rgb(255, 221, 214, maxColorValue = 255))) +
+    labs(x = "Control", y = "% Reads") +
+    theme_classic() +
+    ylim(0, 60)  # Set the same y-axis limits as plot1
+plot1 <- plot1 + theme(text = element_text(size = 20), 
+        axis.text = element_text(size = 15), 
+        axis.title = element_text(size = 20), 
+        plot.title = element_text(size = 25))
+
+
+# S. Cerevisae (BY4741) Cycloheximide: by4741-chx_t05-r1_s1_frame_stats.txt, by4741-chx_t05-r2_s1_frame_stats.txt
+data2 <- data.frame(frequency = c(23.84, 56.61, 19.55), group = c("F0", "F1", "F2"))
+plot2 <- ggplot(data2, aes(x = group, y = frequency, fill = group)) +
+    geom_bar(stat = "identity", color = "black") +
+    scale_fill_manual(values = c("F0" = rgb(199, 236, 220, maxColorValue = 255), 
+                                 "F1" = rgb(199, 236, 220, maxColorValue = 255), 
+                                 "F2" = rgb(199, 236, 220, maxColorValue = 255))) +
+    labs(x = "CHX", y = "% Reads", title="S. Cerevisae (BY4741)") +
+    theme_classic() +
+    ylim(0, 60)  # Set the same y-axis limits as plot1
+plot2 <- plot2 + theme(text = element_text(size = 20), 
+        axis.text = element_text(size = 15), 
+        axis.title = element_text(size = 20), 
+        plot.title = element_text(size = 25))
+
+# Combine the S. Cerevisae plots in a panel
+grid.arrange(plot1, plot2, ncol = 2)
+
+# Candida albicans (sc5314) Control: average of replicates of values from files CTX1_S21_R1_001_frame_stats.txt, CTX3_S22_R1_001_frame_stats.txt
+data3 <- data.frame(frequency = c(41.6, 34.2, 24.7), group = c("F0", "F1", "F2"))
+plot3 <- ggplot(data3, aes(x = group, y = frequency, fill = group)) +
+    geom_bar(stat = "identity", color = "black") +
+    scale_fill_manual(values = c("F0" = rgb(255, 135, 111, maxColorValue = 255), 
+                                 "F1" = rgb(255, 135, 111, maxColorValue = 255), 
+                                 "F2" = rgb(255, 135, 111, maxColorValue = 255))) +
+    labs(x = "Control", y = "% Reads", title= "C.albicans (SC5314)") +
+    theme_classic() + ylim(0,60)
+plot3 <- plot3 + theme(text = element_text(size = 20), 
+        axis.text = element_text(size = 15), 
+        axis.title = element_text(size = 20), 
+        plot.title = element_text(size = 25))
+
+# Candida albicans (sc5314) Cycloheximide: CHX1_S13_R1_001_frame_stats.txt, CHX3_S15_R1_001- frame_stats.txt
+data4 <- data.frame(frequency = c(38.83, 33.92, 27.24), group = c("F0", "F1", "F2"))
+plot4 <- ggplot(data4, aes(x = group, y = frequency, fill = group)) +
+    geom_bar(stat = "identity", color = "black") +
+    scale_fill_manual(values = c("F0" = rgb(77, 181, 188, maxColorValue = 255), 
+                                 "F1" = rgb(77, 181, 188, maxColorValue = 255), 
+                                 "F2" = rgb(77, 181, 188, maxColorValue = 255))) +
+    labs(x = "CHX", y = "% Reads") +
+    theme_classic() + ylim(0,60)
+plot4 <- plot4 + theme(text = element_text(size = 20), 
+        axis.text = element_text(size = 15), 
+        axis.title = element_text(size = 20), 
+        plot.title = element_text(size = 25))
+
+# Combine the Candida plots in a panel
+grid.arrange(plot3, plot4, ncol = 2)
+
+# Figure 1B: Metaplots of termination site in BY4741 versus SC5314.
+
+# Counts per Million (CPM) = raw read count / total reads x 10^6
+# Raw read count files: see Data folder, meta_counts_TERM.txt files
+# Total read count information: see Data folder, data_summary.txt files (NumOfMapPositions)
+# The average of 3 biological replicates is plotted
+
+# BY4741 Control
+control <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/A./BY4741/BY4741_Control_-60to+10.txt", header = TRUE)
+ggplot(control, aes(x = Position, y = Avg_replicates)) +
+  geom_line(color = rgb(255,221,214, maxColorValue = 255)) +  
+  geom_vline(xintercept = -17, linetype = "dashed", color = "black") +   
+  labs(x = "TERM", y = "CPM", title ="BY4741 Control") +
+  theme_classic() + 
+  scale_x_continuous(breaks = seq(min(control$Position), max(control$Position), by = 5))
+
+# BY4741 Cycloheximide
+cycloheximide <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/A./BY4741/BY4741_Cycloheximide_-60to+10.txt", header = TRUE)
+ggplot(cycloheximide, aes(x = Position, y = average_replicates)) +
+  geom_line(color = rgb(199,236,220, maxColorValue = 255)) +  
+  geom_vline(xintercept = -17, linetype = "dashed", color = "black") +   
+  labs(x = "TERM", y = "CPM", title ="BY4741 + Cycloheximide") +
+  theme_classic() + 
+  scale_x_continuous(breaks = seq(min(control$Position), max(control$Position), by = 5))
+
+#SC5314 Control
+Candida_control <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/A./Candida_Control_-60to+10.txt", header = TRUE)
+ggplot(Candida_control, aes(x = Position, y = sc5314_control_CPM)) +
+  geom_line(color = rgb(255,135,111, maxColorValue = 255)) +  geom_vline(xintercept = -18, linetype = "dashed", color = "black")  +   labs(x = "TERM", y = "CPM", title ="SC5314 Control") +
+  theme_classic() + 
+  scale_x_continuous(breaks = seq(min(control$Position), max(control$Position), by = 5))
+
+# SC5314 Cycloheximide
+Candida_cycloheximide <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/A./Candida_Cycloheximide_-60to+10.txt", header = TRUE)
+ggplot(Candida_cycloheximide, aes(x = Position, y = sc5314_Cycloheximide)) +
+  geom_line(color = rgb(77,181,188, maxColorValue = 255)) +  geom_vline(xintercept = -18, linetype = "dashed", color = "black")  +   labs(x = "TERM", y = "CPM", title ="SC5314 + Cycloheximide") +
+  theme_classic()+ scale_x_continuous(breaks = seq(min(control$Position), max(control$Position), by = 5))
+
+#############################################
+
+
+#library(ggplot2)
+#library(gridExtra)
+#library(viridis)
+
+#f1<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_START.txt', header=F)
+#f2<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_TERM.txt', header=F)
+#plot1 <-ggplot(f1, aes(x = f1$V1, y = f1$V2)) +
   geom_line(color="#2f6c8e") +
   geom_vline(xintercept = 0, linetype="dashed", color = "grey") +
   geom_vline(xintercept = 4, linetype="dashed", color = "grey") +
   annotate("text", x = 0, y = max(f1$V2), label = "0", vjust = -1) +
   annotate("text", x = 4, y = max(f1$V2), label = "4", vjust = -1) +
   labs(x = "START", y = "5'pseq cumulative counts")  + theme(panel.background = element_rect(fill = "white"))
-
-plot2 <-ggplot(f2, aes(x = f2$V1, y = f2$V2)) +
+#plot2 <-ggplot(f2, aes(x = f2$V1, y = f2$V2)) +
   geom_line(color = "#2f6c8e") +
   geom_vline(xintercept = -17, linetype="dashed", color = "grey") +
   annotate("text", x = 0, y = max(f1$V2), label = "-17", vjust = -1) +
   labs(x = "TERM", y = "5'pseq cumulative counts")  + theme(panel.background = element_rect(fill = "white"))
+#plot_panel <- grid.arrange(plot1, plot2, nrow = 1)
+#plot_panel
 
-
-plot_panel <- grid.arrange(plot1, plot2, nrow = 1)
-plot_panel
-
-fft<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/fft_signals_start.txt', header=F)
-
-fft<-ggplot(fft.t, aes(x = fft.t$V1, y = fft.t$V2)) +
+#fft<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/fft_signals_start.txt', header=F)
+#fft<-ggplot(fft.t, aes(x = fft.t$V1, y = fft.t$V2)) +
   geom_line(color = "#1f988b") + xlim (0,100) + ylim(0,1)+
   labs(x = "Periodicity", y = "Fast Fourier Transform signal")  + theme(panel.background = element_rect(fill = "white"))

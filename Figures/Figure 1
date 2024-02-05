@@ -106,6 +106,31 @@ ggplot(Candida_cycloheximide, aes(x = Position, y = sc5314_Cycloheximide)) +
   geom_line(color = rgb(77,181,188, maxColorValue = 255)) +  geom_vline(xintercept = -18, linetype = "dashed", color = "black")  +   labs(x = "TERM", y = "CPM", title ="SC5314 + Cycloheximide") +
   theme_classic()+ scale_x_continuous(breaks = seq(min(control$Position), max(control$Position), by = 5))
 
+
+#Figure 1F. Scatterplot of amino acid pauses in depleted versus control conditions
+#Note: the values at -18 from amino_acid_pauses.txt
+
+data <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/aa_counts_position-18.txt", header = TRUE, row.names = 1)
+
+data_avg <- data %>%
+  mutate(ProArgDepletion_avg = rowMeans(select(., starts_with("Pro.Arg.Depletion")), na.rm = TRUE),
+         Control_avg = rowMeans(select(., starts_with("Control")), na.rm = TRUE))
+
+ggplot(data_avg, aes(x = Control_avg, y = ProArgDepletion_avg, label = rownames(data_avg))) +
+  geom_point(size = 3, color = ifelse(rownames(data_avg) == "ARG", "red", "black")) +
+  geom_text_repel(
+    box.padding = 0.5,
+    point.padding = 0.5,
+    segment.color = 'grey',
+    segment.size = 0.5,
+    aes(label = rownames(data_avg)),
+    color = "black" ) +
+  labs(title = "Position -18",
+       x = "Control (5Pseq Reads)",
+       y = "Arg-Pro Depleted (5PSeq Reads)") +
+  theme_minimal()
+
+
 #############################################
 
 

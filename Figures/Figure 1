@@ -153,31 +153,3 @@ ggplot(data_avg, aes(x = Control_avg, y = ProArgDepletion_avg, label = rownames(
   theme_minimal()
 
 
-#############################################
-
-
-#library(ggplot2)
-#library(gridExtra)
-#library(viridis)
-
-#f1<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_START.txt', header=F)
-#f2<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/meta_counts_TERM.txt', header=F)
-#plot1 <-ggplot(f1, aes(x = f1$V1, y = f1$V2)) +
-  geom_line(color="#2f6c8e") +
-  geom_vline(xintercept = 0, linetype="dashed", color = "grey") +
-  geom_vline(xintercept = 4, linetype="dashed", color = "grey") +
-  annotate("text", x = 0, y = max(f1$V2), label = "0", vjust = -1) +
-  annotate("text", x = 4, y = max(f1$V2), label = "4", vjust = -1) +
-  labs(x = "START", y = "5'pseq cumulative counts")  + theme(panel.background = element_rect(fill = "white"))
-#plot2 <-ggplot(f2, aes(x = f2$V1, y = f2$V2)) +
-  geom_line(color = "#2f6c8e") +
-  geom_vline(xintercept = -17, linetype="dashed", color = "grey") +
-  annotate("text", x = 0, y = max(f1$V2), label = "-17", vjust = -1) +
-  labs(x = "TERM", y = "5'pseq cumulative counts")  + theme(panel.background = element_rect(fill = "white"))
-#plot_panel <- grid.arrange(plot1, plot2, nrow = 1)
-#plot_panel
-
-#fft<-read.delim('Data/sc5314/fivepseq_counts/sc5314_fluc_rep01_ACGCTG.fastqAligned.primary.out_dedup/protein_coding/fft_signals_start.txt', header=F)
-#fft<-ggplot(fft.t, aes(x = fft.t$V1, y = fft.t$V2)) +
-  geom_line(color = "#1f988b") + xlim (0,100) + ylim(0,1)+
-  labs(x = "Periodicity", y = "Fast Fourier Transform signal")  + theme(panel.background = element_rect(fill = "white"))

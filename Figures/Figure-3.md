@@ -252,7 +252,7 @@ ctx %>%
 
     ## Warning: Removed 108 rows containing missing values (`geom_point()`).
 
-![](unnamed-chunk-6-1.png)<!-- -->
+![](unnamed-chunk-66-11.png)<!-- -->
 
 ## Barplot of Gene Ontrology from DAVID
 
@@ -277,7 +277,7 @@ ggplot(data_up, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fil
   labs(x = "GO Terms", y = "Fold Enrichment", title = "Upregulated genes in Resistant")
 ```
 
-![](unnamed-chunk-8-1.png)<!-- -->
+![](unnamed-chunk-88-11.png)<!-- -->
 
 \#Plot Downregulated pathways in Resistant strain PLC124
 
@@ -290,4 +290,4 @@ ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, f
   labs(x = "GO Terms", y = "Fold Enrichment", title = "Downregulated genes in Resistant")
 ```
 
-![](unnamed-chunk-9-1.png)<!-- -->
+![](unnamed-chunk-99-11.png)<!-- -->

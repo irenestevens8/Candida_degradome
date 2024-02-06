@@ -196,11 +196,7 @@ Control_r3_CPM for Control group
 
 ``` r
 tss_start <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/START_metaplot_Candida.txt", header = TRUE)
-```
 
-Metaplot at TSS
-
-``` r
 ggplot(tss_start, aes(x = Position)) +
   geom_line(aes(y = Candida_Cycloheximide), color = rgb(77, 181, 188, maxColorValue = 255)) +
   geom_line(aes(y = Candida_Control), color = rgb(255, 135, 111, maxColorValue = 255)) +

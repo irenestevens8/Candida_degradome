@@ -101,7 +101,7 @@ volcano
 
     ## Warning: Removed 147 rows containing missing values (`geom_point()`).
 
-![](unnamed-chunk-3-1.png)
+![](unnamed-chunk-33-1.png)
 
 ## Plot Gene Ontology Terms downloaded from DAVID
 
@@ -128,7 +128,7 @@ plot_up <- ggplot(data_up, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enri
 plot_up
 ```
 
-![](unnamed-chunk-5-1.png)
+![](unnamed-chunk-55-1.png)
 
 Barplot of Enriched GO Terms in transcriptionally downregulated genes
 
@@ -143,7 +143,7 @@ plot_down <- ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.
 plot_down
 ```
 
-![](unnamed-chunk-6-1.png)
+![](unnamed-chunk-66-1.png)
 
 ## Violin plot of amino acid frame protetion index
 
@@ -181,7 +181,7 @@ ggplot(data_long, aes(x = Condition, y = Value, fill = Condition)) +
        y = "Frame Protection Index")
 ```
 
-![](unnamed-chunk-10-1.png)
+![](unnamed-chunk-100-1.png)
 
 Perform T-test
 

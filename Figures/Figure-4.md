@@ -234,7 +234,7 @@ ctx %>%
 
     ## Warning: Removed 1 rows containing missing values (`geom_text_repel()`).
 
-![](unnamed-chunk-6-1.png)<!-- -->
+![](unnamed-chunk-666-111.png)<!-- -->
 
 ## Figure 4B. Barplot of enriched Gene Ontrology Terms from DAVID
 
@@ -259,7 +259,7 @@ ggplot(data_up, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fil
   labs(x = "GO Terms", y = "Fold Enrichment", title = "Transcriptionally Upregulated after Fluconazole in PLC124")
 ```
 
-![](unnamed-chunk-8-1.png)<!-- -->
+![](unnamed-chunk-888-111.png)<!-- -->
 
 Plot Downregulated Pathways in resistant strain PLC124 after Fluconazole
 
@@ -272,7 +272,7 @@ ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, f
   labs(x = "GO Terms", y = "Fold Enrichment", title = "Transcriptionally Downregulated after Fluconazole in PLC124")
 ```
 
-![](unnamed-chunk-9-1.png)<!-- -->
+![](unnamed-chunk-999-111.png)<!-- -->
 
 ## Figure 4D. Codon Protection Index in sensitive and resistant Candida after Fluconazole
 
@@ -309,7 +309,7 @@ p <- ggplot(data, aes(x = strain, y = value, fill = Treatment)) +
 p
 ```
 
-![](unnamed-chunk-12-1.png)<!-- -->
+![](unnamed-chunk-121212-1.png)<!-- -->
 
 Check statistical significance of treatment effect for each strain
 
@@ -399,7 +399,7 @@ ggplot(data, aes(x = log2FoldChange.sc5314, y = log2FoldChange.plc124, color = s
 
     ## Warning: Removed 66 rows containing missing values (`geom_point()`).
 
-![](unnamed-chunk-16-1.png)<!-- -->
+![](unnamed-chunk-161616-1.png)<!-- -->
 
 Count the occurrences of each category
 

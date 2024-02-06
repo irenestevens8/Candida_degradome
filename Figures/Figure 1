@@ -106,6 +106,31 @@ ggplot(Candida_cycloheximide, aes(x = Position, y = sc5314_Cycloheximide)) +
   geom_line(color = rgb(77,181,188, maxColorValue = 255)) +  geom_vline(xintercept = -18, linetype = "dashed", color = "black")  +   labs(x = "TERM", y = "CPM", title ="SC5314 + Cycloheximide") +
   theme_classic()+ scale_x_continuous(breaks = seq(min(control$Position), max(control$Position), by = 5))
 
+
+#Figure 1C. Metaplot at TSS in SC53144 treated with Cycloheximide
+
+# Input file was calculated as follows: Counts per million =  raw counts (meta_counts_TERM.txt)/total reads (NumOfMapPositions from data_summary.txt) x 10^6
+# Plotted are Average of Cycloheximide_r1_CPM, Cycloheximide_r2_CPM cor Treatment group and Average of Control_r1_CPM,	Control_r3_CPM for Control group
+tss_start <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/START_metaplot_Candida.txt", header = TRUE)
+tss_start$Candida_Cycloheximide
+tss_start$Candida_Control
+
+ggplot(tss_start, aes(x = Position)) +
+  geom_line(aes(y = Candida_Cycloheximide), color = rgb(77, 181, 188, maxColorValue = 255)) +
+  geom_line(aes(y = Candida_Control), color = rgb(255, 135, 111, maxColorValue = 255)) +
+  geom_vline(xintercept = -14, linetype = "dashed", color = "grey") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey") +
+  geom_vline(xintercept = +4, linetype = "dashed", color = "grey") +
+  annotate("text", x = -14, y = max(tss_start$Candida_Cycloheximide), label = "-14", vjust = -1) +
+  annotate("text", x = 0, y = max(tss_start$Candida_Cycloheximide), label = "0", vjust = -1) +
+  annotate("text", x = 4, y = max(tss_start$Candida_Cycloheximide), label = "+4", vjust = -1) +
+  labs(x = "TSS", y = "CPM")+
+  theme_classic() 
+
+#Figure 1D. Fast Fourier Transform of SC5314 treated with Cycloheximide: see Candida_main.html report
+
+#Figure 1E. See Candida_codon_linecharts.html report
+
 #Figure 1F. Scatterplot of amino acid pauses in depleted versus control conditions
 
 #Note: the values at -18 from amino_acid_pauses.txt
@@ -151,5 +176,3 @@ ggplot(data_avg, aes(x = Control_avg, y = ProArgDepletion_avg, label = rownames(
        x = "Control (5Pseq Reads)",
        y = "Arg-Pro Depleted (5PSeq Reads)") +
   theme_minimal()
-
-

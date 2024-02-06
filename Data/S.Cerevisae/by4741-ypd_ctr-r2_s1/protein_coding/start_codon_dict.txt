@@ -1,0 +1,5 @@
+ATG	6590
+TTG	1
+GCT	2
+AAC	1
+ATA	6

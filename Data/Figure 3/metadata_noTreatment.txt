@@ -1,0 +1,7 @@
+Name	Strain	Replicate
+sc5314_ut_rep01	sc5314	1
+sc5314_ut_rep02	sc5314	2
+sc5314_ut_rep03	sc5314	3
+plc124_ut_rep01	plc124	1
+plc124_ut_rep02	plc124	2
+plc124_ut_rep03	plc124	3

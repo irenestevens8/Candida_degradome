@@ -1,0 +1,164 @@
+# Figure 4. Transcriptional and post-transcriptional response after Fluconazole in resistant C. albicans 
+
+#Perform differential expression analysis for plc124  
+# Load data and metadata
+ctx<-as.matrix(read.delim("/Users/vip/Documents/Candida/RNA-seq/counts_plc124.txt", sep="\t", row.names = 1, header=T, check.names=F,stringsAsFactors = TRUE))
+coldata<-read.delim("/Users/vip/Documents/Candida/RNA-seq/metadata_plc124.txt",row.names=1,stringsAsFactors = TRUE)
+coldata<-coldata[,c("Treatment","Replicate")]
+coldata$Treatment<-factor(coldata$Treatment)
+
+#set reference level 
+coldata$Treatment=relevel(coldata$Treatment, 'Control')
+
+#perform diffrential expression analysis
+dds <- DESeqDataSetFromMatrix(countData=ctx,  colData = coldata, design <- ~Treatment)
+dds<-DESeq(dds)
+sd <- rlog(dds,blind=TRUE)
+
+plotPCA(sd,intgroup=c("Treatment")) # check for sample swaps
+res = results(dds, contrast=c("Treatment","Fluconazole","Control"))
+ix = which.min(res$padj)
+res <- res[order(res$padj),] 	
+summary(res)
+write.csv(as.data.frame(res),file='/Users/vip/Documents/Candida/RNA-seq/DEG_plc124.txt')
+
+#convert gene names
+ctx<-read.delim("/Users/vip/Documents/Candida/RNA-seq/DEG_plc124.txt", sep="\t", header=T)
+anno<-read.delim("/Users/vip/Documents/CUG_reprocessed/Figure 2/annotation_pretty.txt", sep="\t", header=T, check.names=F)
+common_col<-'cds_id'
+merged.sc<-merge(ctx,anno,by=common_col)
+write.table(merged.sc, file="/Users/vip/Documents/Candida/RNA-seq/DEG_plc124_geneid.txt", sep="\t", quote=F, row.names=T, col.names=NA)
+
+#Load DEG of PLC124
+ctx<-read.delim("/Users/vip/Documents/Candida/RNA-seq/DEG_plc124_geneid.txt", sep="\t", header=T)
+
+ctx <- ctx %>%
+  mutate(
+    gene_type = case_when(
+      log2FoldChange >= 0.5 & padj <= 0.05 ~ "up",
+      log2FoldChange <= -0.5 & padj <= 0.05 ~ "down",
+      TRUE ~ "non_significant"
+    )
+  )
+
+cols <- c("up" = "#870052", "down" = "#4DB5BC", "non_significant" = "#DDDEE0")
+sizes <- c("up" = 3, "down" = 3, "non_significant" = 2)
+alphas <- c("up" = 3, "down" = 3, "non_significant" = 2)
+
+
+# Volcano plot
+ctx %>%
+  ggplot(aes(x = log2FoldChange, y = -log10(padj), fill = gene_type, size = gene_type, alpha = gene_type)) +
+  geom_point(shape = 21, colour = "black") +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+  geom_vline(xintercept = c(-0.5, 0.5), linetype = "dashed") +
+  scale_fill_manual(values = cols) +
+  scale_size_manual(values = sizes) +
+  scale_alpha_manual(values = alphas) +
+  scale_x_continuous(breaks = c(seq(-3, 3, 2)), limits = c(-8, 8)) +
+  geom_text_repel(
+    data = ctx %>%
+      filter(gene_id %in% c("ERG251", "ERG6", "ERG1", "ERG24", "MET13", "FRP1", "ERG11", "CHA1", "ERG2", "ERG5", "ERG4", "FMP45", "BTA1", "ERG7", "ALS7", "SOU2")),
+    aes(label = gene_id),
+    force = 2,
+    nudge_y = 1
+  ) +
+  scale_colour_manual(values = cols) +
+  scale_x_continuous(breaks = c(seq(-2, 2, 1)), limits = c(-2, 2)) + 
+  coord_cartesian(ylim = c(0, 100)) +  # Set y-axis limit to 0 to 100
+  theme_minimal() +  # Set the plot theme to minimal
+  theme(plot.background = element_rect(fill = "white"))  # Change the background color to white
+
+
+# Barplot of Gene Ontrology from DAVID
+
+# Load file from DAVID
+data_up <- read.delim('/Users/vip/Documents/Candida/RNA-seq/up_plc124.txt', header = TRUE)
+data_up <- data_up[order(-data_up$Fold.Enrichment), ]
+
+data_down <- read.delim('/Users/vip/Documents/Candida/RNA-seq/down_plc.txt', header = TRUE)
+data_down <- data_down[order(-data_down$Fold.Enrichment), ]
+
+#Plot Barplots
+ggplot(data_up, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fill = -log10(PValue))) +
+  coord_flip() +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_gradient(low = "white", high = "#870052") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x = "GO Terms", y = "Fold Enrichment", title = "Transcriptionally Upregulated after Fluconazole in PLC124")
+
+ggplot(data_down, aes(x = reorder(Term, Fold.Enrichment), y = Fold.Enrichment, fill = -log10(PValue))) +
+  coord_flip() +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_gradient(low = "white", high = "#4DB5BC") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x = "GO Terms", y = "Fold Enrichment", title = "Transcriptionally Downregulated after Fluconazole in PLC124")
+
+# Figure 4C. Plot Codon Protection Index 
+# Input file was obtained from amino_acid_stats.txt files (FPI column), the average for three biological replicates was calculated, and then converted from a wide format to a long format using library(reshape2)
+data<-read.delim('/Users/vip/Desktop/Figures/raw/melted_df.txt', header=T)
+
+# Reorder the levels of the "strain" variable
+data$strain <- factor(data$strain, levels = c("sc5314", "plc124", "may7"))
+
+# Create the boxplot
+p <- ggplot(data, aes(x = strain, y = value, fill = Treatment)) +
+  geom_boxplot(outlier.shape = NA) +  # Remove outliers
+  scale_color_manual(values = c("Control" = "#4DB5BC", "Fluconazole" =  "#870052"))  +
+  scale_fill_manual(values = c("Control" = "#4DB5BC", "Fluconazole" =  "#870052")) +
+  labs(
+    x = "Strains",
+    y = "Codon Protection Index"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(hjust = 0.5))  # Center x-axis labels
+
+p
+
+# check statistical significance
+t_test_sc5314 <- with(data, t.test(value ~ Treatment, data = subset(data, strain == "sc5314")))
+t_test_plc124 <- with(data, t.test(value ~ Treatment, data = subset(data, strain == "plc124")))
+t_test_may7 <- with(data, t.test(value ~ Treatment, data = subset(data, strain == "may7")))
+
+t_test_sc5314
+t_test_plc124
+t_test_may7
+
+
+# Figure 4E. Sensitive versus resistant expression profiles
+
+#Load data from DEG lists.
+data <- read.table("/Users/vip/Documents/Candida/RNA-seq/DEG_sc5314_plc124_log2FoldChange.txt", header = TRUE)
+
+# Create a new column indicating the significance
+data$significance <- ifelse(abs(data$log2FoldChange.sc5314) < 0.5 & abs(data$log2FoldChange.plc124) < 0.5, "not significant",
+                            ifelse(abs(data$log2FoldChange.sc5314) >= 0.5 & abs(data$log2FoldChange.plc124) < 0.5, "significant in sc5314",
+                                   ifelse(abs(data$log2FoldChange.sc5314) < 0.5 & abs(data$log2FoldChange.plc124) >= 0.5, "significant in plc124",
+                                          "significant in sc5314 and plc124")))
+
+# Map color aesthetic to the significance column
+ggplot(data, aes(x = log2FoldChange.sc5314, y = log2FoldChange.plc124, color = significance)) +
+  geom_point() +
+  scale_color_manual(values = c("not significant" = "#EDD9A3", "significant in sc5314" = "#EA4F88", "significant in plc124" = "#FA7876", "significant in sc5314 and plc124" = "#692A99")) +
+  labs(x = "sc5314 (log2FC)", y = "plc124 (log2FC)") +
+  theme_classic() +
+  theme(panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black"),
+        axis.title = element_text(color = "black", size = 14),
+        plot.title = element_text(color = "black", size = 16, face = "bold"))
+
+# Count the occurrences of each category
+table(data$significance)
+
+# See some genes in the "significant in sc5314" category
+sc5314<-subset(data, significance == "significant in sc5314")
+sc5314
+
+# See some genes in the "significant in plc124" category
+plc124<-subset(data, significance == "significant in plc124")
+plc124
+
+# See some genes in the "significant in sc5314 and plc124" category
+common<-subset(data, significance == "significant in sc5314 and plc124")
+common

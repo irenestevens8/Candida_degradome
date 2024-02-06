@@ -24,9 +24,9 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 **Figure 3**: [Rscript Markdown](https://github.com/irenestevens8/Candida_degradome/blob/main/Figures/Figure-3.md).                    
 **Figure 4**: [Rscript Markdown](https://github.com/irenestevens8/Candida_degradome/blob/main/Figures/Figure-4.md).    
 
-## **Additional scripts pertaining to the study**
+## **Additional analyses pertaining to the study**
 
-[Differential Expression Analysis](https://github.com/irenestevens8/Candida_degradome).                   
+[Differential Expression Analysis](https://github.com/irenestevens8/Candida_degradome/blob/main/Figures/Differential_Gene_Expression_analysis.R).          
 [Functional Annotation Analysis](https://david.ncifcrf.gov/)
 
 # **Supplementary Tables** 

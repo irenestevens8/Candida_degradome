@@ -32,7 +32,10 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 # **Supplementary Tables** 
 
 Table S1: [Candida strains used in study](https://github.com/irenestevens8/Candida_degradome/tree/main/Supplementary%20Tables/Table%20S1.xlsx)                                                       
-Table S2: [Read and mapping quality metrics](https://github.com/irenestevens8/Candida_degradome/tree/main/Supplementary%20Tables/Table%20S2.xlsx)                                      
+Table S2: [Read and mapping quality metrics Table 1](https://github.com/irenestevens8/Candida_degradome/tree/main/Supplementary%20Tables/Table%20S2.xlsx) 
+
+Table S3: [Read and mapping quality metrics Table 2](https://github.com/irenestevens8/Candida_degradome/blob/main/Supplementary%20Tables/Supplementary%20Table%202b.xlsx)    
+
 
 # **Contact** 
 For questions regarding the 5'P sequencing, please contact:                                        

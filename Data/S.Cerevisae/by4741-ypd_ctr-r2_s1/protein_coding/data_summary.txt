@@ -1,0 +1,8 @@
+NumOfReads	2224578
+NumOfReadsDownsampled	2114382
+NumOfMapPositions	1141169
+NumOfTranscripts	6600
+NumOfMapTranscripts	6037
+MinNumOfReadsPerTranscript	0
+MaxNumOfReadsPerTranscript	20250
+MedianNumOfReadsPerTranscript	136

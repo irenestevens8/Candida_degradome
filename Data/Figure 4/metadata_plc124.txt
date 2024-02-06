@@ -1,0 +1,7 @@
+Name	Treatment	Replicate
+plc124_fluc_rep01	Fluconazole	fluc_rep01
+plc124_fluc_rep02	Fluconazole	fluc_rep02
+plc124_fluc_rep03	Fluconazole	fluc_rep03
+plc124_ut_rep01	Control	ut_rep01
+plc124_ut_rep02	Control	ut_rep02
+plc124_ut_rep03	Control	ut_rep03

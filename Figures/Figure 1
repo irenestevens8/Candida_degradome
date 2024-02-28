@@ -70,10 +70,9 @@ grid.arrange(plot3, plot4, ncol = 2)
 
 # Figure 1B: Metaplots of termination site in BY4741 versus SC5314.
 
-# Counts per Million (CPM) = raw read count / total reads x 10^6
-# Raw read count files: see Data folder, meta_counts_TERM.txt files
-# Total read count information: see Data folder, data_summary.txt files (NumOfMapPositions)
-# The average of 3 biological replicates is plotted
+# Counts per Million (CPM): counts from Data folder, meta_counts_TERM.txt files were summed from position -97 to +102. The total number of counts was divided by 1,000,000to obtain ascaling factor. 
+# The counts at each position was divided by the scaling factor. 
+# The average of 2 biological replicates is plotted
 
 # BY4741 Control
 control <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/A./BY4741/BY4741_Control_-60to+10.txt", header = TRUE)

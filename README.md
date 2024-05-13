@@ -34,9 +34,9 @@ All manuscript figures may be reproduced from the R scripts within this reposito
 Table S1: [Candida albicans strains used in study](https://github.com/irenestevens8/Candida_degradome/blob/main/Supplementary%20Files/Table%20S1.xlsx)                                                       
 Table S2: [Sequencing and alignment quality metrics](https://github.com/irenestevens8/Candida_degradome/blob/main/Supplementary%20Files/Table%20S2.xlsx) 
 
-Table S3: [Differentially expressed genes ](https://github.com/irenestevens8/Candida_degradome/blob/main/Supplementary%20Tables/Supplementary%20Table%202b.xlsx)  
+Table S3: [Differentially expressed genes ](https://github.com/irenestevens8/Candida_degradome/blob/main/Supplementary%20Files/Table%20S3.xlsx)  
 
-Table S4: [Enriched DAVID Terms (related to Figures 2 and 4)]
+Table S4: [Enriched DAVID Terms, related to Figures 2 and 4] ()
 
 
 # **Contact** 

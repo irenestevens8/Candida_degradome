@@ -36,7 +36,7 @@ Table S2: [Sequencing and alignment quality metrics](https://github.com/ireneste
 
 Table S3: [Differentially expressed genes ](https://github.com/irenestevens8/Candida_degradome/blob/main/Supplementary%20Files/Table%20S3.xlsx)  
 
-Table S4: [Enriched DAVID Terms, related to Figures 2 and 4] ()
+Table S4: [Enriched DAVID Terms, related to Figures 2 and 4](https://github.com/irenestevens8/Candida_degradome/blob/main/Supplementary%20Files/Table%20S4.xlsx)  
 
 
 # **Contact** 

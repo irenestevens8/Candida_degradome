@@ -45,7 +45,7 @@ For questions regarding the 5'P sequencing, please contact:
 [Vicente Pelechano](vicente.pelechano.garcia@ki.se)   
 
 For questions regarding the strains used in this study, please contact:                      
-[Fitz Gerald Salazar Silao](fitzgerald.silao@su.se)                               
+[Per O. Ljungdahl](per.ljungdahl@scilifelab.se)                               
                          
 
 # **Links to relevant websites** 

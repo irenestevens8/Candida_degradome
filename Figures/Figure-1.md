@@ -274,4 +274,4 @@ ggplot(data_avg, aes(x = Control_avg, y = ProArgDepletion_avg, label = rownames(
     ## Warning: ggrepel: 4 unlabeled data points (too many overlaps). Consider
     ## increasing max.overlaps
 
-![](unnamed-chunk-12-1.png)<!-- -->
+![](unnamed-chunk-12-111111.png)<!-- -->

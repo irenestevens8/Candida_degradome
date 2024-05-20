@@ -249,11 +249,11 @@ ggplot(data_avg, aes(x = Control_avg, y = ProArgDepletion_avg, label = rownames(
 Note: the values at -12 from amino_acid_pauses.txt
 
 ``` r
-data <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/aa_counts_position-12.txt", header = TRUE, row.names = 1)
+data <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/aa_pauses_ypd_-18.txt", header = TRUE, row.names = 1)
 
 data_avg <- data %>%
-  mutate(ProArgDepletion_avg = rowMeans(select(., starts_with("Pro.Arg.Depletion")), na.rm = TRUE),
-         Control_avg = rowMeans(select(., starts_with("Control")), na.rm = TRUE))
+  mutate(ProArgDepletion_avg = rowMeans(select(., starts_with("proline")), na.rm = TRUE),
+         Control_avg = rowMeans(select(., starts_with("control")), na.rm = TRUE))
 
 ggplot(data_avg, aes(x = Control_avg, y = ProArgDepletion_avg, label = rownames(data_avg))) +
   geom_point(size = 3, color = ifelse(rownames(data_avg) %in% c("ARG", "PRO"), "red", "black")) +

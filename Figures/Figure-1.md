@@ -249,7 +249,7 @@ ggplot(data_avg, aes(x = Control_avg, y = ProArgDepletion_avg, label = rownames(
 Note: the values at -12 from amino_acid_pauses.txt
 
 ``` r
-data <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/aa_pauses_ypd_-18.txt", header = TRUE, row.names = 1)
+data <- read.table("/Users/vip/Documents/CUG_reprocessed/Figure 1/aa_pauses_ypd_-12.txt", header = TRUE, row.names = 1)
 
 data_avg <- data %>%
   mutate(ProArgDepletion_avg = rowMeans(select(., starts_with("proline")), na.rm = TRUE),
